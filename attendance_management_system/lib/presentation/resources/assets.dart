@@ -4,4 +4,5 @@ class Assets {
   final String class_T = "assets/icon/class_timetable_icon.svg";
   final String notification = "assets/icon/notification_icon.svg";
   final String query = "assets/icon/query_icon.svg";
+  final String student = "assets/icon/login_page_image.png";
 }

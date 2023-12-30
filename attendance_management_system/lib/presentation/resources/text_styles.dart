@@ -29,4 +29,9 @@ class AppTextStyles {
 
   final regularText = GoogleFonts.leagueSpartan(
       fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500);
+  final loginNameText = GoogleFonts.kalam(
+    fontSize: 25,
+    color: Colors.orange,
+    fontWeight: FontWeight.w500,
+  );
 }
