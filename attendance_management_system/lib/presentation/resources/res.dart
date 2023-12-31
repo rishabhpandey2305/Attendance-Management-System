@@ -15,4 +15,5 @@ void initializeResources(BuildContext context) {
   colors = AppColors();
   styles = AppTextStyles();
 }
-final RegExp emailpattern = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+
+final RegExp emailpattern = RegExp(r"^\d{2}[a-zA-Z0-9._%+-]+@mbit\.edu\.in$");

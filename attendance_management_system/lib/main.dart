@@ -1,6 +1,8 @@
 import 'package:attendance_management_system/presentation/routes.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
+import 'package:attendance_management_system/presentation/screens/student/studentProfile.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentSignInPage.dart';
+import 'package:attendance_management_system/presentation/screens/student/studentHomePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,8 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'Attendance Management System',
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      // initialRoute: student_login.routeName,
-      home: student_login(),
+      // initialRoute: Student_Page.routeName,
+      home: Student_Page(),
       routes: routes,
     );
   }

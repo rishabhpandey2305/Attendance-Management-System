@@ -34,4 +34,6 @@ class AppTextStyles {
     color: Colors.orange,
     fontWeight: FontWeight.w500,
   );
+  final regularTextblack = GoogleFonts.leagueSpartan(
+      fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500);
 }

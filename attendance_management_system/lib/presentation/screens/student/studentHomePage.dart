@@ -1,3 +1,4 @@
+import 'package:attendance_management_system/presentation/screens/student/studentProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,10 +32,10 @@ class Student_Page extends StatelessWidget {
                   bottomLeft: Radius.circular(40),
                   bottomRight: Radius.circular(40),
                 )),
-            width: 385,
-            height: 300,
-            // width: MediaQuery.of(context).size.width,
-            // height: MediaQuery.of(context).size.height / 2.5,
+            // width: 385,
+            // height: 300,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 2.5,
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
@@ -76,7 +77,10 @@ class Student_Page extends StatelessWidget {
                       width: 38,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const studentProfile()));
+                      },
                       child: CircleAvatar(
                         minRadius: 80.0,
                         maxRadius: 80.0,
@@ -121,10 +125,10 @@ class Student_Page extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              width: 385,
+              // width: 385,
               height: 300,
               // color: Colors.transparent,
-              // width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

@@ -31,14 +31,15 @@ class _student_loginState extends State<student_login> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Color(0xFF3498db),
+            automaticallyImplyLeading: false,
           ),
           body: ListView(
             children: [
               Container(
                 width: 385,
-                height: 300,
+                // height: 300,
                 // width: MediaQuery.of(context).size.width,
-                // height: MediaQuery.of(context).size.height / 3,
+                height: MediaQuery.of(context).size.height / 3,
                 decoration: const BoxDecoration(
                     color: Color(0xFF3498db),
                     borderRadius: BorderRadius.only(
@@ -154,7 +155,7 @@ class buildemailfield extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return "Please enter a email";
           } else if (!emailpattern.hasMatch(value)) {
-            return "Please enter a valid email";
+            return "Please enter college email id";
           }
           return null;
         },
