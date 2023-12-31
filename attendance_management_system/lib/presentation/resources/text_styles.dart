@@ -16,7 +16,7 @@ class AppTextStyles {
   final shortBio = GoogleFonts.leagueSpartan(
     fontSize: 15,
     fontWeight: FontWeight.w400,
-    color: Colors.black,
+    color: Color(0xFF3498db),
   );
 
   final pageHeading = GoogleFonts.leagueSpartan(
