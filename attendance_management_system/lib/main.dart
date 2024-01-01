@@ -1,7 +1,5 @@
 import 'package:attendance_management_system/presentation/routes.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
-import 'package:attendance_management_system/presentation/screens/student/studentProfile.dart';
-import 'package:attendance_management_system/presentation/screens/student/studentSignInPage.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentHomePage.dart';
 import 'package:flutter/material.dart';
 

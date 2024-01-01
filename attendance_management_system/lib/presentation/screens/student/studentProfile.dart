@@ -1,6 +1,5 @@
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class studentProfile extends StatefulWidget {
   const studentProfile({super.key});
@@ -10,10 +9,10 @@ class studentProfile extends StatefulWidget {
 }
 
 class _studentProfileState extends State<studentProfile> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _enNo = TextEditingController();
-  TextEditingController _phoneNumber = TextEditingController();
-  TextEditingController _batch = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _enNo = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
+  final TextEditingController _batch = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +70,12 @@ class _studentProfileState extends State<studentProfile> {
                 title: "Enrollment Number",
                 value: _enNo.text,
                 controller: _enNo),
+            profileDetails(
+                title: "Batch", value: _batch.text, controller: _batch),
+            profileDetails(
+                title: "Phone Number",
+                value: _phoneNumber.text,
+                controller: _phoneNumber),
           ],
         )
       ]),
@@ -100,12 +105,10 @@ class profileDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Icon(Widget.icon),
                 Text(
                   title,
                   style: styles.regularTextblack,
                 ),
-
                 const SizedBox(
                   height: 10,
                 ),
@@ -122,7 +125,6 @@ class profileDetails extends StatelessWidget {
                         icon: const Icon(Icons.edit_outlined)),
                   ],
                 ),
-
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 2,
                   child: const Divider(
