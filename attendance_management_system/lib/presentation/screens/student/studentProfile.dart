@@ -1,5 +1,6 @@
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class studentProfile extends StatefulWidget {
   const studentProfile({super.key});
