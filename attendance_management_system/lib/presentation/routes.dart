@@ -4,5 +4,5 @@ import 'package:attendance_management_system/presentation/screens/student/studen
 
 Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
-  Student_Page.routeName: (context) => Student_Page(),
+  StudentPage.routeName: (context) => StudentPage(),
 };

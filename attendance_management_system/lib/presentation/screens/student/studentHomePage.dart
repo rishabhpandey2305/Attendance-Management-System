@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Student_Page extends StatelessWidget {
+class StudentPage extends StatelessWidget {
   static String routeName = 'Student_Page';
 
   @override
@@ -79,7 +79,7 @@ class Student_Page extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const studentProfile()));
+                            builder: (context) => const StudentProfile()));
                       },
                       child: CircleAvatar(
                         minRadius: 80.0,

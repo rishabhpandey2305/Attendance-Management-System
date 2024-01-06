@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
       // initialRoute: Student_Page.routeName,
-      home: Student_Page(),
+      home: StudentPage(),
       routes: routes,
     );
   }

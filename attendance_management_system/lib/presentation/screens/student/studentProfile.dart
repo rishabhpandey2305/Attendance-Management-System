@@ -1,22 +1,48 @@
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class studentProfile extends StatefulWidget {
-  const studentProfile({super.key});
+class StudentProfile extends StatefulWidget {
+  const StudentProfile({super.key});
 
   @override
-  State<studentProfile> createState() => _studentProfileState();
+  State<StudentProfile> createState() => _StudentProfileState();
 }
 
-class _studentProfileState extends State<studentProfile> {
+class _StudentProfileState extends State<StudentProfile> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _enNo = TextEditingController();
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _batch = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    _loadData(); // Load saved data when the widget is initialized
+  }
+
+  _loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _nameController.text = prefs.getString('name') ?? '';
+      _enNo.text = prefs.getString('En.No') ?? '';
+      _phoneNumber.text = prefs.getString('phoneNo') ?? '';
+      _batch.text = prefs.getString('batch') ?? '';
+    });
+  }
+
+  _saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('name', _nameController.text);
+    prefs.setString('En.No', _enNo.text);
+    prefs.setString('phoneNo', _phoneNumber.text);
+    prefs.setString('batch', _batch.text);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(children: [
         Container(
           decoration: const BoxDecoration(
@@ -65,17 +91,26 @@ class _studentProfileState extends State<studentProfile> {
               title: "Name",
               value: _nameController.text,
               controller: _nameController,
+              onSave: _saveData,
             ),
             profileDetails(
-                title: "Enrollment Number",
-                value: _enNo.text,
-                controller: _enNo),
+              title: "Enrollment Number",
+              value: _enNo.text,
+              controller: _enNo,
+              onSave: _saveData,
+            ),
             profileDetails(
-                title: "Batch", value: _batch.text, controller: _batch),
+              title: "Batch",
+              value: _batch.text,
+              controller: _batch,
+              onSave: _saveData,
+            ),
             profileDetails(
-                title: "Phone Number",
-                value: _phoneNumber.text,
-                controller: _phoneNumber),
+              title: "Phone Number",
+              value: _phoneNumber.text,
+              controller: _phoneNumber,
+              onSave: _saveData,
+            ),
           ],
         )
       ]),
@@ -87,61 +122,60 @@ class profileDetails extends StatelessWidget {
   const profileDetails({
     Key? key,
     required this.title,
-    required,
     required this.value,
     required this.controller,
+    required this.onSave,
   }) : super(key: key);
   final String title;
   final String value;
   final TextEditingController controller;
+  final VoidCallback onSave;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(right: 20, left: 20, top: 10),
       // width: MediaQuery.of(context).size.width / 2,
-      child: Expanded(
-        child: Row(children: [
-          Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: styles.regularTextblack,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      value,
-                      style: styles.regularTextblack,
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          _showEditDialog(context, title, controller);
-                        },
-                        icon: const Icon(Icons.edit_outlined)),
-                  ],
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: const Divider(
-                    thickness: 1.0,
+      child: Row(children: [
+        Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: styles.regularTextblack,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Text(
+                    value,
+                    style: styles.regularTextblack,
                   ),
+                  IconButton(
+                      onPressed: () {
+                        _showEditDialog(context, title, controller, onSave);
+                      },
+                      icon: const Icon(Icons.edit_outlined)),
+                ],
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: const Divider(
+                  thickness: 1.0,
                 ),
-              ],
-            ),
-          )
-        ]),
-      ),
+              ),
+            ],
+          ),
+        )
+      ]),
     );
   }
 }
 
-void _showEditDialog(
-    BuildContext context, String title, TextEditingController controller) {
+void _showEditDialog(BuildContext context, String title,
+    TextEditingController controller, VoidCallback saveCallback) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -161,6 +195,7 @@ void _showEditDialog(
           TextButton(
             onPressed: () {
               // Save the edited value
+              saveCallback();
               Navigator.of(context).pop();
             },
             child: Text('Save'),

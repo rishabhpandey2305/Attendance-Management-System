@@ -6,6 +6,7 @@ class StudentProfileData extends ChangeNotifier {
   TextEditingController _phoneNumber = TextEditingController();
   TextEditingController _batch = TextEditingController();
 
+
   void updateName(String newName) {
     _nameController.text = newName;
     notifyListeners();
