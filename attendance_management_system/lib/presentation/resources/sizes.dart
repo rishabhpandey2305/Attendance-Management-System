@@ -1,37 +1,35 @@
 import 'package:flutter/material.dart';
 
 class AppSizes {
-  late final Size _screenSize;
-
-  late final bool isPhone;
-  late final double width;
-  late final double height;
-
-  late final double topPadding;
-
-  //For dynamic Sizing
-  late final double widthRatio;
-  late final double heightRatio;
-  late final double fontRatio;
-
+  late final double extraLargeFontSize;
+  late final double extraLargePadding;
   //Dynamic Font Sizes
   late final double extraSmallFontSize;
-  late final double smallFontSize;
-  late final double mediumFontSize;
-  late final double regularFontSize;
-  late final double largeFontSize;
-  late final double extraLargeFontSize;
-  late final double jumboFontSize;
 
-  //padding
-  late final double smallPadding;
-  late final double regularPadding;
+  late final double fontRatio;
+  late final double height;
+  late final double heightRatio;
+  late final bool isPhone;
+  late final double jumboFontSize;
+  late final double jumboPadding;
+  late final double largeFontSize;
+  late final double largePadding;
+  late final double largerPadding;
+  late final double mediumFontSize;
   late final double mediumPadding;
   late final double pagePadding;
-  late final double largePadding;
-  late final double extraLargePadding;
-  late final double largerPadding;
-  late final double jumboPadding;
+  late final double regularFontSize;
+  late final double regularPadding;
+  late final double smallFontSize;
+  //padding
+  late final double smallPadding;
+
+  late final double topPadding;
+  late final double width;
+  //For dynamic Sizing
+  late final double widthRatio;
+
+  late final Size _screenSize;
 
   void initializeSize(context) {
     _screenSize = MediaQuery.of(context).size;

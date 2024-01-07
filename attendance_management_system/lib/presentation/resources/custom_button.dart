@@ -2,12 +2,12 @@ import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
 
 class defaultButton extends StatelessWidget {
-  final VoidCallback onPress;
-  final String title;
-
   const defaultButton(
       {Key? key, required this.onPress, required this.title, required})
       : super(key: key);
+
+  final VoidCallback onPress;
+  final String title;
 
   @override
   Widget build(BuildContext context) {

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StudentProfileData extends ChangeNotifier {
-  TextEditingController _nameController = TextEditingController();
-
-  TextEditingController get nameController => _nameController;
-
   StudentProfileData() {
     // Load the name when the class is instantiated
     loadName();
   }
+
+  TextEditingController _nameController = TextEditingController();
+
+  TextEditingController get nameController => _nameController;
 
   Future<void> loadName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

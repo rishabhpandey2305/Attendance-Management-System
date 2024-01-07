@@ -6,10 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class StudentPage extends StatelessWidget {
-  static String routeName = 'Student_Page';
-  final String studentName;
-
   const StudentPage({Key? key, required this.studentName}) : super(key: key);
+
+  static String routeName = 'Student_Page';
+
+  final String studentName;
 
   @override
   Widget build(BuildContext context) {

@@ -14,10 +14,10 @@ class StudentProfile extends StatefulWidget {
 }
 
 class _StudentProfileState extends State<StudentProfile> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _enNo = TextEditingController();
-  final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _batch = TextEditingController();
+  final TextEditingController _enNo = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
 
   @override
   void initState() {
@@ -142,10 +142,12 @@ class ProfileDetails extends StatelessWidget {
     required this.controller,
     required this.onSave,
   }) : super(key: key);
-  final String title;
-  final String value;
+
   final TextEditingController controller;
   final VoidCallback onSave;
+  final String title;
+  final String value;
+
   @override
   Widget build(BuildContext context) {
     return Container(

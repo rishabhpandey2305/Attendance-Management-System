@@ -12,9 +12,9 @@ class student_logout extends StatefulWidget {
 }
 
 class _student_loginState extends State<student_logout> {
-  final GlobalKey<FormState> _signInKey = GlobalKey();
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
+  final GlobalKey<FormState> _signInKey = GlobalKey();
 
   @override
   void initState() {

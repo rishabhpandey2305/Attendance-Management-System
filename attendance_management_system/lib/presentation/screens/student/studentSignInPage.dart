@@ -13,9 +13,9 @@ class StudentLogin extends StatefulWidget {
 }
 
 class _StudentLoginState extends State<StudentLogin> {
-  final GlobalKey<FormState> _signInKey = GlobalKey();
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
+  final GlobalKey<FormState> _signInKey = GlobalKey();
 
   @override
   void initState() {
