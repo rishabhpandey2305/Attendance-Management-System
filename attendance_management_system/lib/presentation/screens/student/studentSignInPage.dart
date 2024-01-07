@@ -5,21 +5,20 @@ import 'package:flutter/material.dart';
 
 late bool _passwordvisible;
 
-class student_login extends StatefulWidget {
-  const student_login({super.key});
+class StudentLogin extends StatefulWidget {
+  const StudentLogin({super.key});
 
   @override
-  State<student_login> createState() => _student_loginState();
+  State<StudentLogin> createState() => _StudentLoginState();
 }
 
-class _student_loginState extends State<student_login> {
+class _StudentLoginState extends State<StudentLogin> {
   final GlobalKey<FormState> _signInKey = GlobalKey();
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _passwordvisible = true;
   }
@@ -30,7 +29,7 @@ class _student_loginState extends State<student_login> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Color(0xFF3498db),
+            backgroundColor: const Color(0xFF3498db),
             automaticallyImplyLeading: false,
           ),
           body: ListView(
@@ -77,9 +76,6 @@ class _student_loginState extends State<student_login> {
               ),
               Container(
                   width: 385,
-                  // height: 300,
-                  // width: MediaQuery.of(context).size.width,
-                  // height: MediaQuery.of(context).size.height / 1.8,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(40),
@@ -217,3 +213,4 @@ class _buildpasswordfieldState extends State<buildpasswordfield> {
     );
   }
 }
+  

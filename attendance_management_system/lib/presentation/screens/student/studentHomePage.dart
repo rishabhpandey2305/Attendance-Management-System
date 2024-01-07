@@ -1,10 +1,15 @@
+import 'package:attendance_management_system/presentation/resources/provider.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class StudentPage extends StatelessWidget {
   static String routeName = 'Student_Page';
+  final String studentName;
+
+  const StudentPage({Key? key, required this.studentName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +50,22 @@ class StudentPage extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Hi, Rishabh",
-                          style: styles.regularText,
+                        FutureBuilder(
+                          future: Provider.of<StudentProfileData>(context,
+                                  listen: false)
+                              .loadName(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return Text(
+                                'Hey, ${Provider.of<StudentProfileData>(context, listen: false).nameController.text}',
+                                style: styles.regularText,
+                              );
+                            } else {
+                              // You can show a loading indicator here if needed
+                              return const CircularProgressIndicator();
+                            }
+                          },
                         ),
                         const SizedBox(
                           height: 10,
@@ -74,7 +92,7 @@ class StudentPage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      width: 38,
+                      width: 10,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -140,11 +158,11 @@ class StudentPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -164,11 +182,11 @@ class StudentPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -192,11 +210,11 @@ class StudentPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -215,11 +233,11 @@ class StudentPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -243,19 +261,19 @@ class StudentPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                     ],
@@ -264,19 +282,19 @@ class StudentPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: Color(0xFF3498db),
+                            color: const Color(0xFF3498db),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                     ],

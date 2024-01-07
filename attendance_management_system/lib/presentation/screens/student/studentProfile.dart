@@ -1,5 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:attendance_management_system/presentation/resources/provider.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StudentProfile extends StatefulWidget {
@@ -37,6 +41,16 @@ class _StudentProfileState extends State<StudentProfile> {
     prefs.setString('En.No', _enNo.text);
     prefs.setString('phoneNo', _phoneNumber.text);
     prefs.setString('batch', _batch.text);
+    Provider.of<StudentProfileData>(context, listen: false)
+        .updateName(_nameController.text);
+    // Navigator.pop(context);
+
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => StudentPage(studentName: _nameController.text),
+    //   ),
+    // );
   }
 
   @override
@@ -44,41 +58,43 @@ class _StudentProfileState extends State<StudentProfile> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(children: [
-        Container(
-          decoration: const BoxDecoration(
-              color: Color(0xFF3498db),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40),
-                bottomRight: Radius.circular(40),
-              )),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 3,
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: CircleAvatar(
-                      minRadius: 80.0,
-                      maxRadius: 80.0,
-                      backgroundColor: Colors.blue,
-                      backgroundImage: AssetImage(assets.profileimage),
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+                color: Color(0xFF3498db),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                )),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 3,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: CircleAvatar(
+                        minRadius: 80.0,
+                        maxRadius: 80.0,
+                        backgroundColor: Colors.blue,
+                        backgroundImage: AssetImage(assets.profileimage),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text("Hey, ${_nameController.text}",
-                      style: styles.regularText),
-                ],
-              ),
-            ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text("Hey, ${_nameController.text}",
+                        style: styles.regularText),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(
@@ -87,25 +103,25 @@ class _StudentProfileState extends State<StudentProfile> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            profileDetails(
+            ProfileDetails(
               title: "Name",
               value: _nameController.text,
               controller: _nameController,
               onSave: _saveData,
             ),
-            profileDetails(
+            ProfileDetails(
               title: "Enrollment Number",
               value: _enNo.text,
               controller: _enNo,
               onSave: _saveData,
             ),
-            profileDetails(
+            ProfileDetails(
               title: "Batch",
               value: _batch.text,
               controller: _batch,
               onSave: _saveData,
             ),
-            profileDetails(
+            ProfileDetails(
               title: "Phone Number",
               value: _phoneNumber.text,
               controller: _phoneNumber,
@@ -118,8 +134,8 @@ class _StudentProfileState extends State<StudentProfile> {
   }
 }
 
-class profileDetails extends StatelessWidget {
-  const profileDetails({
+class ProfileDetails extends StatelessWidget {
+  const ProfileDetails({
     Key? key,
     required this.title,
     required this.value,
@@ -133,7 +149,7 @@ class profileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: 20, left: 20, top: 10),
+      padding: const EdgeInsets.only(right: 20, left: 20, top: 10),
       // width: MediaQuery.of(context).size.width / 2,
       child: Row(children: [
         Form(
@@ -190,7 +206,7 @@ void _showEditDialog(BuildContext context, String title,
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
@@ -198,7 +214,7 @@ void _showEditDialog(BuildContext context, String title,
               saveCallback();
               Navigator.of(context).pop();
             },
-            child: Text('Save'),
+            child: const Text('Save'),
           ),
         ],
       );

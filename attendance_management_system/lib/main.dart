@@ -1,14 +1,22 @@
+import 'package:attendance_management_system/presentation/resources/provider.dart';
 import 'package:attendance_management_system/presentation/routes.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentHomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => StudentProfileData(),
+      child: const MyApp(),
+    ),
+  );
+  ;
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +26,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
       // initialRoute: Student_Page.routeName,
-      home: StudentPage(),
+      home: const StudentPage(
+        studentName: "",
+      ),
       routes: routes,
     );
   }
