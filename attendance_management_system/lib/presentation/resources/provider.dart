@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class StudentProfileData extends ChangeNotifier {
   StudentProfileData() {
-    // Load the name when the class is instantiated
+    
     loadName();
   }
 

@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:attendance_management_system/presentation/resources/provider.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +20,7 @@ class _StudentProfileState extends State<StudentProfile> {
   @override
   void initState() {
     super.initState();
-    _loadData(); // Load saved data when the widget is initialized
+    _loadData(); 
   }
 
   _loadData() async {
@@ -43,14 +41,14 @@ class _StudentProfileState extends State<StudentProfile> {
     prefs.setString('batch', _batch.text);
     Provider.of<StudentProfileData>(context, listen: false)
         .updateName(_nameController.text);
-    // Navigator.pop(context);
+    
 
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => StudentPage(studentName: _nameController.text),
-    //   ),
-    // );
+    
+    
+    
+    
+    
+    
   }
 
   @override
@@ -152,7 +150,7 @@ class ProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(right: 20, left: 20, top: 10),
-      // width: MediaQuery.of(context).size.width / 2,
+      
       child: Row(children: [
         Form(
           child: Column(
@@ -212,7 +210,7 @@ void _showEditDialog(BuildContext context, String title,
           ),
           TextButton(
             onPressed: () {
-              // Save the edited value
+              
               saveCallback();
               Navigator.of(context).pop();
             },

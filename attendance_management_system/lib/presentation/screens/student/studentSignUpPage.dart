@@ -1,5 +1,6 @@
 import 'package:attendance_management_system/presentation/resources/custom_button.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 late bool _passwordvisible;
@@ -12,13 +13,13 @@ class student_logout extends StatefulWidget {
 }
 
 class _student_loginState extends State<student_logout> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
   final GlobalKey<FormState> _signInKey = GlobalKey();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _passwordvisible = true;
   }
@@ -36,8 +37,6 @@ class _student_loginState extends State<student_logout> {
             children: [
               Container(
                 width: 385,
-                // height: 300,
-                // width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 3,
                 decoration: const BoxDecoration(
                     color: Color(0xFF3498db),
@@ -76,9 +75,6 @@ class _student_loginState extends State<student_logout> {
               ),
               Container(
                   width: 385,
-                  // height: 300,
-                  // width: MediaQuery.of(context).size.width,
-                  // height: MediaQuery.of(context).size.height / 1.8,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(40),
@@ -99,11 +95,14 @@ class _student_loginState extends State<student_logout> {
                                 buildpasswordfield(
                                     passwordcontroller: _passwordcontroller),
                                 defaultButton(
-                                    onPress: () {
+                                    onPress: () async {
                                       (_signInKey.currentState!.validate());
                                       {
-                                        _emailcontroller;
-                                        _passwordcontroller;
+                                        await _auth
+                                            .createUserWithEmailAndPassword(
+                                                email: _emailcontroller.text,
+                                                password:
+                                                    _passwordcontroller.text);
                                       }
                                     },
                                     title: "Signup")

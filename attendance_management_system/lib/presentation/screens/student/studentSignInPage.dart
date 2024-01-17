@@ -1,7 +1,9 @@
 import 'package:attendance_management_system/presentation/resources/custom_button.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentSignUpPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 late bool _passwordvisible;
 
@@ -13,6 +15,7 @@ class StudentLogin extends StatefulWidget {
 }
 
 class _StudentLoginState extends State<StudentLogin> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
   final GlobalKey<FormState> _signInKey = GlobalKey();
@@ -36,8 +39,6 @@ class _StudentLoginState extends State<StudentLogin> {
             children: [
               Container(
                 width: 385,
-                // height: 300,
-                // width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 3,
                 decoration: const BoxDecoration(
                     color: Color(0xFF3498db),
@@ -96,10 +97,19 @@ class _StudentLoginState extends State<StudentLogin> {
                                 buildpasswordfield(
                                     passwordcontroller: _passwordcontroller),
                                 defaultButton(
-                                    onPress: () {
+                                    onPress: () async {
                                       if (_signInKey.currentState!.validate()) {
-                                        _emailcontroller;
-                                        _passwordcontroller;
+                                        try {
+                                          await _auth
+                                              .signInWithEmailAndPassword(
+                                                  email: _emailcontroller.text,
+                                                  password:
+                                                      _passwordcontroller.text);
+                                        } catch (e) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(e.toString())));
+                                        }
                                       }
                                     },
                                     title: "Signin")
@@ -213,4 +223,3 @@ class _buildpasswordfieldState extends State<buildpasswordfield> {
     );
   }
 }
-  

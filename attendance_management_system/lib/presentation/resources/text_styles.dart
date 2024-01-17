@@ -11,7 +11,7 @@ class AppTextStyles {
     fontSize: sizes.jumboFontSize,
     fontWeight: FontWeight.w700,
     foreground: Paint()
-      // ..style = PaintingStyle.stroke
+      
       ..strokeWidth = 1.5
       ..color = colors.black,
   );

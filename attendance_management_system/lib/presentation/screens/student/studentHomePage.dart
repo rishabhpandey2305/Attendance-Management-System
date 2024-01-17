@@ -38,8 +38,8 @@ class StudentPage extends StatelessWidget {
                   bottomLeft: Radius.circular(40),
                   bottomRight: Radius.circular(40),
                 )),
-            // width: 385,
-            // height: 300,
+            
+            
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 2.5,
             padding: const EdgeInsets.all(16),
@@ -63,7 +63,7 @@ class StudentPage extends StatelessWidget {
                                 style: styles.regularText,
                               );
                             } else {
-                              // You can show a loading indicator here if needed
+                              
                               return const CircularProgressIndicator();
                             }
                           },
@@ -144,9 +144,9 @@ class StudentPage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              // width: 385,
+              
               height: 300,
-              // color: Colors.transparent,
+              
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                   color: Colors.white,
