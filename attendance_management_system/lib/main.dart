@@ -36,5 +36,6 @@ class MyApp extends StatelessWidget {
       home: const AttendanceScreen(),
       routes: routes,
     );
+    
   }
 }

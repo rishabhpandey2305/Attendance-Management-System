@@ -20,7 +20,7 @@ class _StudentProfileState extends State<StudentProfile> {
   @override
   void initState() {
     super.initState();
-    _loadData(); 
+    _loadData();
   }
 
   _loadData() async {
@@ -41,14 +41,6 @@ class _StudentProfileState extends State<StudentProfile> {
     prefs.setString('batch', _batch.text);
     Provider.of<StudentProfileData>(context, listen: false)
         .updateName(_nameController.text);
-    
-
-    
-    
-    
-    
-    
-    
   }
 
   @override
@@ -150,7 +142,6 @@ class ProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(right: 20, left: 20, top: 10),
-      
       child: Row(children: [
         Form(
           child: Column(
@@ -210,7 +201,6 @@ void _showEditDialog(BuildContext context, String title,
           ),
           TextButton(
             onPressed: () {
-              
               saveCallback();
               Navigator.of(context).pop();
             },

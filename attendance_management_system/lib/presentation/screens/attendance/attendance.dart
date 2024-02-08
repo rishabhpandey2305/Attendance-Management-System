@@ -116,7 +116,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Attendance Management'),
+        title: const Text(
+          'Attendance Dashboard',
+        ),
       ),
       body: enrollmentNumbers.isEmpty
           ? const Center(
