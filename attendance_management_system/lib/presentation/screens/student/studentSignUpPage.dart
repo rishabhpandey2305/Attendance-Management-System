@@ -152,7 +152,7 @@ class buildemailfield extends StatelessWidget {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return "Please enter a email";
-          } else if (!emailpattern.hasMatch(value)) {
+          } else if (!emailpatternstudent.hasMatch(value)) {
             return "Please enter college email id";
           }
           return null;

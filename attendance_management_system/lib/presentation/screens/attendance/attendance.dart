@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AttendanceScreen extends StatefulWidget {
-  const AttendanceScreen({Key? key});
+  final DateTime selectedDate;
+  final String subjectName;
+  const AttendanceScreen(
+      {Key? key, required this.selectedDate, required this.subjectName})
+      : super(key: key);
 
   @override
   State<AttendanceScreen> createState() => _AttendanceScreenState();
 }
 
 class _AttendanceScreenState extends State<AttendanceScreen> {
-  String uri = "http://192.168.103.78:3000/attendance";
+  String uri = "http://192.168.70.208:3000/attendance";
 
   Future<void> getRecord() async {
     try {
@@ -48,7 +52,17 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
         bool present = attendanceMap[enNo] ?? true;
         String attendance = present ? 'P' : 'A';
 
-        records.add({'en_no': enNo, 'attendance': attendance});
+        records.add({
+          'en_no': enNo,
+          'attendance': attendance,
+          'subject': widget.subjectName
+        });
+      }
+      String formattedDate =
+          "${widget.selectedDate.year}-${widget.selectedDate.month}-${widget.selectedDate.day}";
+
+      for (var record in records) {
+        record['date'] = formattedDate;
       }
 
       // Show confirmation dialog
@@ -84,7 +98,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
 
       await http.post(
         Uri.parse(uri),
-        body: jsonEncode({'records': records}),
+        body: jsonEncode({
+          'records': records,
+          'subjectName': widget.subjectName,
+        }),
         headers: {'Content-Type': 'application/json'},
       );
 
@@ -116,6 +133,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Attendance Dashboard',
         ),

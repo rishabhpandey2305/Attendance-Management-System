@@ -1,9 +1,13 @@
 const express = require('express');
-const dbConnection = require('./src/db/db_connection');
+const bodyParser = require('body-parser');
+const dbConnection = require('../db/db_connection'); // Adjusted path
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+
+router.get('/attendance', async (req, res) => {
     try {
         const connection = await dbConnection();
         const query = 'SELECT `en_no` FROM `student`';
@@ -16,19 +20,21 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/attendance', async (req, res) => {
     try {
         const connection = await dbConnection();
         const records = req.body.records;
+        const subjectName = req.body.subjectName;
 
         for (const record of records) {
-            const { en_no: enrollmentNumber, attendance } = record;
-            const date = '11/01/2024';
+            const { en_no: enrollmentNumber, attendance, date } = record;
 
-            const query = `INSERT INTO attendance (en_no, attendance_date) VALUES (?, ?)
-                  ON DUPLICATE KEY UPDATE attendance_date = ?`;
+            const formattedDate = new Date(date).toLocaleDateString('en-GB');
 
-            await connection.query(query, [enrollmentNumber, attendance, attendance]);
+            const query = `INSERT INTO attendance (en_no, status, date, subject) VALUES (?, ?, ?, ?)
+                  ON DUPLICATE KEY UPDATE status = ?, date = ?, subject = ?`;
+
+            await connection.query(query, [enrollmentNumber, attendance, formattedDate, subjectName, attendance, formattedDate, subjectName]);
         }
 
         connection.release();
@@ -38,5 +44,7 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
+
+
 
 module.exports = router;

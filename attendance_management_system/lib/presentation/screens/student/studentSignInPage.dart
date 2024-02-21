@@ -1,5 +1,6 @@
 import 'package:attendance_management_system/presentation/resources/custom_button.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
+import 'package:attendance_management_system/presentation/screens/attendance/attendance.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentSignUpPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -105,6 +106,7 @@ class _StudentLoginState extends State<StudentLogin> {
                                                   email: _emailcontroller.text,
                                                   password:
                                                       _passwordcontroller.text);
+                                          
                                         } catch (e) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
@@ -160,7 +162,7 @@ class buildemailfield extends StatelessWidget {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return "Please enter a email";
-          } else if (!emailpattern.hasMatch(value)) {
+          } else if (!emailpatternstudent.hasMatch(value)) {
             return "Please enter college email id";
           }
           return null;
