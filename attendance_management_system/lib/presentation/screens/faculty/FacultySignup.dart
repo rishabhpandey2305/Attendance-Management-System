@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 late bool _passwordvisible;
 
-class FacultyLogout extends StatefulWidget {
-  const FacultyLogout({super.key});
+class FacultySignup extends StatefulWidget {
+  const FacultySignup({super.key});
 
   @override
-  State<FacultyLogout> createState() => _student_loginState();
+  State<FacultySignup> createState() => _student_loginState();
 }
 
-class _student_loginState extends State<FacultyLogout> {
+class _student_loginState extends State<FacultySignup> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();

@@ -1,9 +1,11 @@
+import 'package:attendance_management_system/presentation/screens/faculty/FacultySignin.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Home_Page extends StatelessWidget {
-  const Home_Page({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,7 @@ class Home_Page extends StatelessWidget {
         ),
         backgroundColor: Colors.blue,
       ),
+      drawer: const NavigationDrawer(),
       body: Column(
         children: [
           const SizedBox(
@@ -41,29 +44,34 @@ class Home_Page extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              assets.attendace,
-                              height: 80,
-                              width: 40,
-                            ),
-                            Text(
-                              "Attendance",
-                              style: styles.regularText,
-                              textAlign: TextAlign.center,
-                            )
-                          ],
+                      InkWell(
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          height: MediaQuery.of(context).size.height / 6,
+                          decoration: BoxDecoration(
+                              color: const Color(0xFF3498db),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                assets.attendace,
+                                height: 80,
+                                width: 40,
+                              ),
+                              Text(
+                                "Attendance",
+                                style: styles.regularText,
+                                textAlign: TextAlign.center,
+                              )
+                            ],
+                          ),
                         ),
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const subject())),
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 10),
@@ -191,4 +199,42 @@ class Home_Page extends StatelessWidget {
       ),
     );
   }
+}
+
+class NavigationDrawer extends StatelessWidget {
+  const NavigationDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) => Drawer(
+        child: SingleChildScrollView(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                buildHeader(context),
+                buildMenuItems(context)
+              ]),
+        ),
+      );
+  Widget buildHeader(BuildContext context) => Container(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      );
+  Widget buildMenuItems(BuildContext context) => Container(
+        padding: const EdgeInsets.all(10),
+        child: Wrap(
+          runSpacing: 10,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.home_outlined),
+              title: const Text('Home'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.login_outlined),
+              title: const Text('Login'),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const FacultyLogin())),
+            ),
+          ],
+        ),
+      );
 }

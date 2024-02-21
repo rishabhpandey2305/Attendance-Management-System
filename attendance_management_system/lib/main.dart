@@ -4,6 +4,7 @@ import 'package:attendance_management_system/presentation/resources/provider.dar
 import 'package:attendance_management_system/presentation/routes.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
+import 'package:attendance_management_system/presentation/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'Attendance Management System',
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: const subject(),
+      home: const HomePage(),
       routes: routes,
     );
   }

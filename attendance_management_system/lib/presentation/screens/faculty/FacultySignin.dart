@@ -127,7 +127,7 @@ class _StudentLoginState extends State<FacultyLogin> {
               TextButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const FacultyLogout()));
+                        builder: (context) => const FacultySignup()));
                   },
                   child: Text(
                     "Don't have an account? Sign up here",
