@@ -4,12 +4,14 @@ import 'package:attendance_management_system/presentation/screens/attendance/att
 
 class DefaultCalendar extends StatelessWidget {
   final String subjectName;
-  const DefaultCalendar({Key? key, required this.subjectName}) : super(key: key);
+  const DefaultCalendar({Key? key, required this.subjectName})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Choose Date'),
       ),
       body: Center(
@@ -18,12 +20,13 @@ class DefaultCalendar extends StatelessWidget {
           child: CalendarWidget(
             onDateSelected: (selectedDate) {
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      AttendanceScreen(selectedDate: selectedDate,subjectName: subjectName,
-                ),
-              ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AttendanceScreen(
+                      selectedDate: selectedDate,
+                      subjectName: subjectName,
+                    ),
+                  ));
             },
           ),
         ),

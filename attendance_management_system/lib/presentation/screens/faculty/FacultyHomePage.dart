@@ -1,12 +1,11 @@
 import 'package:attendance_management_system/presentation/screens/faculty/FacultySignin.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
-import 'package:attendance_management_system/presentation/screens/student/attendanceCheck.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class FacultyHomePage extends StatelessWidget {
+  const FacultyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +69,9 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        // onTap: () => Navigator.of(context).push(
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const subject())),
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const subject())),
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 10),
@@ -234,12 +233,6 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Login'),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const FacultyLogin())),
-            ),
-            ListTile(
-              leading: const Icon(Icons.verified_user_outlined),
-              title: const Text('Attencance Check'),
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AttendanceCheck())),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:attendance_management_system/presentation/resources/custom_button.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/attendance/attendance.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/FacultyHomePage.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/FacultySignup.dart';
 import 'package:attendance_management_system/presentation/screens/student/studentSignUpPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -107,10 +108,10 @@ class _StudentLoginState extends State<FacultyLogin> {
                                                   email: _emailcontroller.text,
                                                   password:
                                                       _passwordcontroller.text);
-                                          // Navigator.of(context).push(
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             const AttendanceScreen()));
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const FacultyHomePage()));
                                         } catch (e) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
