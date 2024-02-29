@@ -30,7 +30,7 @@ class _student_loginState extends State<FacultySignup> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Color(0xFF3498db),
+            backgroundColor: const Color(0xFF3498db),
             automaticallyImplyLeading: false,
           ),
           body: ListView(

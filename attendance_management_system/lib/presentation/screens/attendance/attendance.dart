@@ -14,7 +14,7 @@ class AttendanceScreen extends StatefulWidget {
 }
 
 class _AttendanceScreenState extends State<AttendanceScreen> {
-  String uri = "http://192.168.112.183:3000/attendance";
+  String uri = "http://192.168.17.183:3000/attendance";
 
   Future<void> getRecord() async {
     try {

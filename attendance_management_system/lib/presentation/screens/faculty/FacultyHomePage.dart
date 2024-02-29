@@ -3,6 +3,7 @@ import 'package:attendance_management_system/presentation/screens/faculty/subjec
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:attendance_management_system/presentation/screens/attendance/attendanceCheck.dart';
 
 class FacultyHomePage extends StatelessWidget {
   const FacultyHomePage({super.key});
@@ -98,99 +99,6 @@ class FacultyHomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              assets.notification,
-                              height: 80,
-                              width: 40,
-                            ),
-                            Text(
-                              "Notifications",
-                              style: styles.regularText,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              assets.query,
-                              height: 80,
-                              width: 40,
-                            ),
-                            Text(
-                              "Query",
-                              style: styles.regularText,
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
@@ -233,6 +141,12 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Login'),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const FacultyLogin())),
+            ),
+            ListTile(
+              leading: const Icon(Icons.verified_user_outlined),
+              title: const Text('Attencance Check'),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const AttendanceCheck())),
             ),
           ],
         ),

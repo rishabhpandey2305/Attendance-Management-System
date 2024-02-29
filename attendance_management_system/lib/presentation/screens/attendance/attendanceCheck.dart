@@ -1,5 +1,4 @@
 import 'package:attendance_management_system/presentation/resources/custom_button.dart';
-import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -19,7 +18,7 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
   Future<void> _checkAttendance() async {
     try {
       final response = await http.get(Uri.parse(
-          'http://192.168.112.183:3000/attendancePercentage/$enrollmentNumber/$subjectName'));
+          'http://192.168.17.183:3000/attendancePercentage/$enrollmentNumber/$subjectName'));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final parsedAttendancePercentage = data['attendancePercentage'];

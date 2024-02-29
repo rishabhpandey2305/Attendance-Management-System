@@ -1,5 +1,4 @@
 import 'package:attendance_management_system/presentation/screens/faculty/FacultySignin.dart';
-import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:attendance_management_system/presentation/screens/attendance/attendanceCheck.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
