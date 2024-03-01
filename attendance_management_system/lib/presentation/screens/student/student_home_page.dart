@@ -1,5 +1,5 @@
 import 'package:attendance_management_system/presentation/resources/provider.dart';
-import 'package:attendance_management_system/presentation/screens/student/studentProfile.dart';
+import 'package:attendance_management_system/presentation/screens/student/student_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';

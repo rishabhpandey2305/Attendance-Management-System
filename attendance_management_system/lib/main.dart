@@ -1,9 +1,7 @@
 import 'package:attendance_management_system/firebase_options.dart';
-import 'package:attendance_management_system/presentation/resources/calendar.dart';
 import 'package:attendance_management_system/presentation/resources/provider.dart';
 import 'package:attendance_management_system/presentation/routes.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
-import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:attendance_management_system/presentation/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +18,6 @@ void main() async {
       child: const MyApp(),
     ),
   );
-  ;
 }
 
 class MyApp extends StatelessWidget {

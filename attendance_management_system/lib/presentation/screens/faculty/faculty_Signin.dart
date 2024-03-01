@@ -1,12 +1,9 @@
 import 'package:attendance_management_system/presentation/resources/custom_button.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
-import 'package:attendance_management_system/presentation/screens/attendance/attendance.dart';
-import 'package:attendance_management_system/presentation/screens/faculty/FacultyHomePage.dart';
-import 'package:attendance_management_system/presentation/screens/faculty/FacultySignup.dart';
-import 'package:attendance_management_system/presentation/screens/student/studentSignUpPage.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/Faculty_HomePage.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/Faculty_Signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 late bool _passwordvisible;
 

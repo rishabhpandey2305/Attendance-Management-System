@@ -1,5 +1,5 @@
-import 'package:attendance_management_system/presentation/screens/faculty/FacultySignin.dart';
-import 'package:attendance_management_system/presentation/screens/attendance/attendanceCheck.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/faculty_Signin.dart';
+import 'package:attendance_management_system/presentation/screens/attendance/attendance_check.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -69,9 +69,6 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        // onTap: () => Navigator.of(context).push(
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const subject())),
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 10),
@@ -95,99 +92,6 @@ class HomePage extends StatelessWidget {
                             )
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              assets.notification,
-                              height: 80,
-                              width: 40,
-                            ),
-                            Text(
-                              "Notifications",
-                              style: styles.regularText,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              assets.query,
-                              height: 80,
-                              width: 40,
-                            ),
-                            Text(
-                              "Query",
-                              style: styles.regularText,
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: MediaQuery.of(context).size.height / 6,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
                       ),
                     ],
                   ),

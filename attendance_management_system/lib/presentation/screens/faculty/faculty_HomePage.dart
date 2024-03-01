@@ -1,9 +1,9 @@
-import 'package:attendance_management_system/presentation/screens/faculty/FacultySignin.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/faculty_Signin.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:attendance_management_system/presentation/screens/attendance/attendanceCheck.dart';
+import 'package:attendance_management_system/presentation/screens/attendance/attendance_check.dart';
 
 class FacultyHomePage extends StatelessWidget {
   const FacultyHomePage({super.key});
