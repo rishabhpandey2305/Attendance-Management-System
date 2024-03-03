@@ -14,6 +14,9 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
   String enrollmentNumber = '';
   String subjectName = '';
   double? attendancePercentage;
+  int? totalPresent;
+  int? totalAbsent;
+  int? totalLectures;
 
   Future<void> _checkAttendance() async {
     try {
@@ -22,9 +25,15 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final parsedAttendancePercentage = data['attendancePercentage'];
+        final totalPresent = data['totalPresent'];
+        final totalAbsent = data['totalAbsent'];
+        final totalLectures = data['totalLectures'];
         if (parsedAttendancePercentage != null) {
           setState(() {
             attendancePercentage = parsedAttendancePercentage.toDouble();
+            this.totalPresent = totalPresent;
+            this.totalAbsent = totalAbsent;
+            this.totalLectures = totalLectures;
           });
         } else {
           setState(() {
@@ -107,6 +116,15 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                   Text(
                     'Your Attendance is : ${attendancePercentage?.toStringAsFixed(2)}%',
                   ),
+                Text(
+                  'Total Present: $totalPresent',
+                ),
+                Text(
+                  'Total Absent: $totalAbsent', // New line
+                ),
+                Text(
+                  'Total Lectures: $totalLectures',
+                ),
               ],
             ),
           ),
