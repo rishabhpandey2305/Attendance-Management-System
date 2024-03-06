@@ -1,22 +1,105 @@
 import 'package:attendance_management_system/presentation/screens/faculty/faculty_Signin.dart';
-import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
+import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
+import 'package:attendance_management_system/presentation/screens/home_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:attendance_management_system/presentation/screens/attendance/attendance_check.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class FacultyHomePage extends StatelessWidget {
-  const FacultyHomePage({super.key});
+class FacultyHomePage extends StatefulWidget {
+  const FacultyHomePage({Key? key}) : super(key: key);
+
+  @override
+  _FacultyHomePageState createState() => _FacultyHomePageState();
+}
+
+class _FacultyHomePageState extends State<FacultyHomePage> {
+  late SharedPreferences _prefs;
+  final _secureStorage = FlutterSecureStorage();
+  bool _isLoggedIn = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkSession();
+  }
+
+  Future<void> _checkSession() async {
+    _prefs = await SharedPreferences.getInstance();
+    final isLoggedIn = _prefs.getBool('isLoggedIn') ?? false;
+    if (isLoggedIn) {
+      setState(() {
+        _isLoggedIn = true;
+      });
+    } else {
+      // If not logged in, navigate to login page
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ));
+    }
+  }
+
+  Future<void> _logout() async {
+    await _prefs.setBool('isLoggedIn', false);
+    setState(() {
+      _isLoggedIn = false;
+    });
+    // Navigate to home page after logout
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const HomePage(),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Home Page",
-          style: styles.pageHeading,
+        title: const Text(
+          "Faculty",
+          style: TextStyle(fontSize: 20),
         ),
         backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            icon: const Row(
+              children: [
+                Icon(Icons.logout),
+                SizedBox(width: 5),
+                Text(
+                  'Logout',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text("Confirm Logout"),
+                    content: const Text("Are you sure you want to logout?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Close the dialog
+                        },
+                        child: Text("Cancel"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          _logout();
+                        },
+                        child: Text("Logout"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+        ],
       ),
       drawer: const NavigationDrawer(),
       body: Column(
@@ -62,9 +145,9 @@ class FacultyHomePage extends StatelessWidget {
                                 height: 80,
                                 width: 40,
                               ),
-                              Text(
+                              const Text(
                                 "Attendance",
-                                style: styles.regularText,
+                                style: TextStyle(fontSize: 16),
                                 textAlign: TextAlign.center,
                               )
                             ],
@@ -90,9 +173,9 @@ class FacultyHomePage extends StatelessWidget {
                               height: 80,
                               width: 40,
                             ),
-                            Text(
+                            const Text(
                               "Time Table",
-                              style: styles.regularText,
+                              style: TextStyle(fontSize: 16),
                             )
                           ],
                         ),
@@ -110,7 +193,7 @@ class FacultyHomePage extends StatelessWidget {
 }
 
 class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({super.key});
+  const NavigationDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Drawer(
@@ -123,9 +206,11 @@ class NavigationDrawer extends StatelessWidget {
               ]),
         ),
       );
+
   Widget buildHeader(BuildContext context) => Container(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       );
+
   Widget buildMenuItems(BuildContext context) => Container(
         padding: const EdgeInsets.all(10),
         child: Wrap(
@@ -137,14 +222,8 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () {},
             ),
             ListTile(
-              leading: const Icon(Icons.login_outlined),
-              title: const Text('Login'),
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const FacultyLogin())),
-            ),
-            ListTile(
               leading: const Icon(Icons.verified_user_outlined),
-              title: const Text('Attencance Check'),
+              title: const Text('Attendance Check'),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AttendanceCheck())),
             ),

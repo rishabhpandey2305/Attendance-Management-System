@@ -19,3 +19,5 @@ void initializeResources(BuildContext context) {
 final RegExp emailpatternstudent =
     RegExp(r"^\d{2}[a-zA-Z0-9._%+-]+@mbit\.edu\.in$");
 final RegExp emailpatternfaculty = RegExp(r"^[a-zA-Z0-9._%+-]+@mbit\.edu\.in$");
+
+final RegExp enrollmentNumberPattern = RegExp(r'^\d{14}$');
