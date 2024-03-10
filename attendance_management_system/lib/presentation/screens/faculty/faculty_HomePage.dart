@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:attendance_management_system/presentation/screens/home_page.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:attendance_management_system/presentation/screens/attendance/attendance_check.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -60,7 +61,7 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
           "Faculty",
           style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Row(
@@ -134,20 +135,29 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                           width: MediaQuery.of(context).size.width / 2.5,
                           height: MediaQuery.of(context).size.height / 6,
                           decoration: BoxDecoration(
-                              color: const Color(0xFF3498db),
-                              borderRadius: BorderRadius.circular(20)),
+                            color: Colors.white,
+                            // border: Border.all(color: Colors.purple),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black38,
+                                offset: Offset(0, 2),
+                                blurRadius: 7,
+                              ),
+                            ],
+                          ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SvgPicture.asset(
+                              Image.asset(
                                 assets.attendace,
-                                height: 80,
-                                width: 40,
+                                // height: 100,
+                                width: 80,
                               ),
-                              const Text(
+                              Text(
                                 "Attendance",
-                                style: TextStyle(fontSize: 16),
+                                style: styles.regularText,
                                 textAlign: TextAlign.center,
                               )
                             ],
@@ -162,20 +172,28 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                         width: MediaQuery.of(context).size.width / 2.5,
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
-                            color: const Color(0xFF3498db),
-                            borderRadius: BorderRadius.circular(20)),
+                            color: Colors.white,
+                            // border: Border.all(color: Colors.purple),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black38,
+                                offset: Offset(0, 2),
+                                blurRadius: 7,
+                              ),
+                            ]),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(
+                            Image.asset(
                               assets.class_T,
-                              height: 80,
-                              width: 40,
+                              // height: 80,
+                              width: 80,
                             ),
-                            const Text(
+                            Text(
                               "Time Table",
-                              style: TextStyle(fontSize: 16),
+                              style: styles.regularText,
                             )
                           ],
                         ),
@@ -217,12 +235,12 @@ class NavigationDrawer extends StatelessWidget {
           runSpacing: 10,
           children: [
             ListTile(
-              leading: const Icon(Icons.home_outlined),
+              leading: Image.asset(assets.home),
               title: const Text('Home'),
               onTap: () {},
             ),
             ListTile(
-              leading: const Icon(Icons.verified_user_outlined),
+              leading: Image.asset(assets.attendace),
               title: const Text('Attendance Check'),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AttendanceCheck())),

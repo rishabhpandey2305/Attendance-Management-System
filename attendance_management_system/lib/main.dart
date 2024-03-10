@@ -47,7 +47,8 @@ class AppRouter extends StatelessWidget {
       future: _isLoggedIn(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(body: Center(child: CircularProgressIndicator()));
+          return const Scaffold(
+              body: Center(child: CircularProgressIndicator()));
         } else {
           final bool isLoggedIn = snapshot.data ?? false;
           return isLoggedIn ? const FacultyHomePage() : const HomePage();

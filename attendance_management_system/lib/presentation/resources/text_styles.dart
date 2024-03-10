@@ -11,7 +11,6 @@ class AppTextStyles {
     fontSize: sizes.jumboFontSize,
     fontWeight: FontWeight.w700,
     foreground: Paint()
-      
       ..strokeWidth = 1.5
       ..color = colors.black,
   );
@@ -23,13 +22,13 @@ class AppTextStyles {
   );
 
   final pageHeading = GoogleFonts.leagueSpartan(
-    fontSize: 32,
-    color: colors.white,
-    fontWeight: FontWeight.bold,
+    fontSize: 28,
+    color: colors.black,
+    // fontWeight: FontWeight.bold,
   );
 
   final regularText = GoogleFonts.leagueSpartan(
-      fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500);
+      fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500);
 
   final regularTextblack = GoogleFonts.leagueSpartan(
       fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500);
