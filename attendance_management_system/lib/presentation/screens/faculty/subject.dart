@@ -10,14 +10,20 @@ class subject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Text(
           "Choose Subject",
           style: styles.pageHeading,
         ),
-        backgroundColor: colors.blue,
+        centerTitle: true,
       ),
       body: Column(children: [
+        const SizedBox(
+          height: 10,
+          width: 1000,
+          child: Card(
+            color: Colors.blue,
+          ),
+        ),
         Expanded(
           child: Container(
             height: 300,

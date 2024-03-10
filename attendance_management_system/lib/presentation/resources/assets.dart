@@ -7,4 +7,5 @@ class Assets {
   final String student = "assets/icon/login_page_image.png";
   final String home = "assets/icon/home.png";
   final String login = "assets/icon/login.png";
+  final String logout = "assets/icon/logout.png";
 }

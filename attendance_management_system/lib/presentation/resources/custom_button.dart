@@ -22,7 +22,7 @@ class defaultButton extends StatelessWidget {
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
             title,
-            style: styles.regularText,
+            style: styles.regularTextwhite,
           ),
         ]),
       ),

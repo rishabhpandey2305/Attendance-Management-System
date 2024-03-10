@@ -21,16 +21,16 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
   );
 
-  final pageHeading = GoogleFonts.leagueSpartan(
-    fontSize: 28,
+  final pageHeading = GoogleFonts.rubik(
+    fontSize: 24,
     color: colors.black,
     // fontWeight: FontWeight.bold,
   );
 
-  final regularText = GoogleFonts.leagueSpartan(
-      fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500);
+  final regularTextwhite = GoogleFonts.leagueSpartan(
+      fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500);
 
-  final regularTextblack = GoogleFonts.leagueSpartan(
+  final regularText = GoogleFonts.leagueSpartan(
       fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500);
 
   final shortBio = GoogleFonts.leagueSpartan(

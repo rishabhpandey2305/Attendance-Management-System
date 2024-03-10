@@ -1,13 +1,19 @@
-import 'package:attendance_management_system/presentation/screens/faculty/faculty_Signin.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/subject.dart';
 import 'package:attendance_management_system/presentation/screens/home_page.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:attendance_management_system/presentation/screens/attendance/attendance_check.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+class LogoutUtility {
+  static Future<void> logout(BuildContext context) async {
+    final _prefs = await SharedPreferences.getInstance();
+    await _prefs.setBool('isLoggedIn', false);
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const HomePage(),
+    ));
+  }
+}
 
 class FacultyHomePage extends StatefulWidget {
   const FacultyHomePage({Key? key}) : super(key: key);
@@ -18,8 +24,6 @@ class FacultyHomePage extends StatefulWidget {
 
 class _FacultyHomePageState extends State<FacultyHomePage> {
   late SharedPreferences _prefs;
-  final _secureStorage = FlutterSecureStorage();
-  bool _isLoggedIn = false;
 
   @override
   void initState() {
@@ -31,9 +35,7 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
     _prefs = await SharedPreferences.getInstance();
     final isLoggedIn = _prefs.getBool('isLoggedIn') ?? false;
     if (isLoggedIn) {
-      setState(() {
-        _isLoggedIn = true;
-      });
+      setState(() {});
     } else {
       // If not logged in, navigate to login page
       Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -43,35 +45,33 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
   }
 
   Future<void> _logout() async {
-    await _prefs.setBool('isLoggedIn', false);
-    setState(() {
-      _isLoggedIn = false;
-    });
-    // Navigate to home page after logout
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => const HomePage(),
-    ));
+    await LogoutUtility.logout(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Faculty",
-          style: TextStyle(fontSize: 20),
+          style: styles.pageHeading,
         ),
+        centerTitle: true,
         backgroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Row(
+            icon: Row(
               children: [
-                Icon(Icons.logout),
-                SizedBox(width: 5),
-                Text(
-                  'Logout',
-                  style: TextStyle(fontSize: 16),
+                Image.asset(
+                  assets.logout,
+                  height: 35,
+                  width: 50,
                 ),
+                const SizedBox(width: 5),
+                // Text(
+                //   'Logout',
+                //   style: styles.regularText,
+                // ),
               ],
             ),
             onPressed: () {
@@ -86,13 +86,15 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                         onPressed: () {
                           Navigator.of(context).pop(); // Close the dialog
                         },
-                        child: Text("Cancel"),
+                        child: const Text("Cancel"),
                       ),
                       TextButton(
                         onPressed: () {
-                          _logout();
+                          LogoutUtility.logout(context);
                         },
-                        child: Text("Logout"),
+                        child: const Text(
+                          "Logout",
+                        ),
                       ),
                     ],
                   );
@@ -244,6 +246,39 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Attendance Check'),
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AttendanceCheck())),
+            ),
+            ListTile(
+              leading: Image.asset(assets.logout),
+              title: const Text('Logout'),
+              onTap: () => {
+                {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text("Confirm Logout"),
+                        content: const Text("Are you sure you want to logout?"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // Close the dialog
+                            },
+                            child: const Text("Cancel"),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              LogoutUtility.logout(context);
+                            },
+                            child: const Text(
+                              "Logout",
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  )
+                },
+              },
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -133,9 +134,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Attendance Dashboard',
+          style: styles.pageHeading,
         ),
+        centerTitle: true,
       ),
       body: enrollmentNumbers.isEmpty
           ? const Center(

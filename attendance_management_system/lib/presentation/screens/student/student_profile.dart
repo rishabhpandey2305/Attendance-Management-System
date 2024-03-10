@@ -149,7 +149,7 @@ class ProfileDetails extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: styles.regularTextblack,
+                style: styles.regularText,
               ),
               const SizedBox(
                 height: 10,
@@ -158,7 +158,7 @@ class ProfileDetails extends StatelessWidget {
                 children: [
                   Text(
                     value,
-                    style: styles.regularTextblack,
+                    style: styles.regularText,
                   ),
                   IconButton(
                       onPressed: () {
