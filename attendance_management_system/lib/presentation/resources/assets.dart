@@ -8,4 +8,5 @@ class Assets {
   final String home = "assets/icon/home.png";
   final String login = "assets/icon/login.png";
   final String logout = "assets/icon/logout.png";
+  final String drawer = "assets/icon/menu.png";
 }

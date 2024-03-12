@@ -25,7 +25,7 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
     if (_formKey.currentState!.validate()) {
       try {
         final response = await http.get(Uri.parse(
-            'http://192.168.1.5:3000/attendancePercentage/$enrollmentNumber/$subjectName'));
+            'http://192.168.27.183:3000/attendancePercentage/$enrollmentNumber/$subjectName'));
         if (response.statusCode == 200) {
           final data = json.decode(response.body);
           final parsedAttendancePercentage = data['attendancePercentage'];

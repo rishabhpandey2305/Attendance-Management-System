@@ -13,12 +13,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Image.asset(assets.drawer),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         title: Text(
           "Home",
           style: styles.pageHeading,
         ),
         centerTitle: true,
-
         // backgroundColor: Color.fromARGB(149, 243, 229, 33),
       ),
       drawer: const NavigationDrawer(),

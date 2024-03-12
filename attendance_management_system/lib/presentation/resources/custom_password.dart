@@ -27,7 +27,7 @@ class _buildpasswordfieldState extends State<buildpasswordfield> {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextFormField(
@@ -35,9 +35,22 @@ class _buildpasswordfieldState extends State<buildpasswordfield> {
         controller: widget._passwordcontroller,
         decoration: InputDecoration(
             hintText: "Enter your Password",
-            border: InputBorder.none,
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(11),
+                borderSide: const BorderSide(color: Colors.deepOrange)),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(11),
+              borderSide: const BorderSide(color: Colors.red),
+            ),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(11),
+              borderSide: const BorderSide(color: Colors.deepOrange),
+            ),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(11),
+                borderSide: const BorderSide(color: Colors.blue)),
             suffixIcon: IconButton(
               onPressed: () {
                 setState(() {
