@@ -15,7 +15,7 @@ class AttendanceScreen extends StatefulWidget {
 }
 
 class _AttendanceScreenState extends State<AttendanceScreen> {
-  String uri = "http://192.168.27.183:3000/attendance";
+  String uri = "http://192.168.235.183:3000/attendance";
 
   Future<void> getRecord() async {
     try {
@@ -134,11 +134,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Attendance Dashboard',
-          style: styles.pageHeading,
         ),
-        centerTitle: true,
       ),
       body: enrollmentNumbers.isEmpty
           ? const Center(

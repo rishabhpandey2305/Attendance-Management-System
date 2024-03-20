@@ -24,6 +24,7 @@ dependencies:
   http: ^1.1.2
   table_calendar: ^3.1.0
   flutter_secure_storage: ^9.0.0
+  flutter_3d_drawer: ^0.0.1
 
 dev_dependencies:
   flutter_test:

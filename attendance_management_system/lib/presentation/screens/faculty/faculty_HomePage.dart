@@ -52,11 +52,9 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Faculty",
-          style: styles.pageHeading,
         ),
-        centerTitle: true,
         backgroundColor: Colors.white,
         actions: [
           IconButton(
@@ -68,10 +66,6 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                   width: 50,
                 ),
                 const SizedBox(width: 5),
-                // Text(
-                //   'Logout',
-                //   style: styles.regularText,
-                // ),
               ],
             ),
             onPressed: () {

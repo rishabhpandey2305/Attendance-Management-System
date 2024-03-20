@@ -1,10 +1,7 @@
 import 'package:attendance_management_system/presentation/screens/faculty/faculty_Signin.dart';
 import 'package:attendance_management_system/presentation/screens/attendance/attendance_check.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,12 +16,9 @@ class HomePage extends StatelessWidget {
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-        title: Text(
+        title: const Text(
           "Home",
-          style: styles.pageHeading,
         ),
-        centerTitle: true,
-        // backgroundColor: Color.fromARGB(149, 243, 229, 33),
       ),
       drawer: const NavigationDrawer(),
       body: Column(
@@ -60,7 +54,6 @@ class HomePage extends StatelessWidget {
                           height: MediaQuery.of(context).size.height / 6,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            // border: Border.all(color: Colors.purple),
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: const [
                               BoxShadow(
@@ -76,7 +69,6 @@ class HomePage extends StatelessWidget {
                             children: [
                               Image.asset(
                                 assets.attendace,
-                                // height: 100,
                                 width: 80,
                               ),
                               Text(
@@ -97,7 +89,6 @@ class HomePage extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            // border: Border.all(color: Colors.purple),
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: const [
                               BoxShadow(
@@ -112,7 +103,6 @@ class HomePage extends StatelessWidget {
                           children: [
                             Image.asset(
                               assets.class_T,
-                              // height: 80,
                               width: 80,
                             ),
                             Text(

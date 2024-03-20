@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:attendance_management_system/firebase_options.dart';
 import 'package:attendance_management_system/presentation/resources/provider.dart';
-import 'package:attendance_management_system/presentation/routes.dart';
 import 'package:attendance_management_system/presentation/resources/res.dart';
 import 'package:attendance_management_system/presentation/screens/home_page.dart';
 import 'package:attendance_management_system/presentation/screens/faculty/faculty_HomePage.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(
     ChangeNotifierProvider(
       create: (context) => StudentProfileData(),
@@ -28,10 +24,14 @@ class MyApp extends StatelessWidget {
     initializeResources(context);
     return MaterialApp(
       title: 'Attendance Management System',
-      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
+      theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(
+            centerTitle: true,
+            titleTextStyle: styles.pageHeading,
+          )),
       debugShowCheckedModeBanner: false,
       home: const AppRouter(),
-      routes: routes,
     );
   }
 }

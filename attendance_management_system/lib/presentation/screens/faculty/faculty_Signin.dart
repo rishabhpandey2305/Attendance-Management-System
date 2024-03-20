@@ -21,7 +21,7 @@ class _FacultyLoginState extends State<FacultyLogin> {
 
   Future<void> _signIn() async {
     if (_formKey.currentState!.validate()) {
-      final url = Uri.parse('http://192.168.27.183:3000/auth/login');
+      final url = Uri.parse('http://192.168.235.183:3000/auth/login');
       final response = await http.post(
         url,
         body: json.encode({

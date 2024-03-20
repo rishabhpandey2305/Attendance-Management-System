@@ -10,11 +10,9 @@ class subject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Choose Subject",
-          style: styles.pageHeading,
         ),
-        centerTitle: true,
       ),
       body: Column(children: [
         const SizedBox(
